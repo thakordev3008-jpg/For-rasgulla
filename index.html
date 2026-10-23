@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For rasgulla 🥺</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:24px 16px;
+ display:flex;align-items:center;justify-content:center;
+ background:radial-gradient(ellipse at top,#482039,#100d16 75%);
+ color:#fff0f7;font-family:Georgia,serif;
+ overflow-x:hidden;
+}
+.card{
+ width:100%;max-width:520px;padding:35px 24px;
+ text-align:center;border:1px solid #ffffff25;
+ border-radius:25px;
+ background:linear-gradient(145deg,#281927,#17111e);
+ box-shadow:0 20px 70px #0008;
+}
+.moon{font-size:30px;color:#ff9fbe}
+.small{
+ color:#e5a7c0;letter-spacing:4px;
+ font:11px Arial,sans-serif;text-transform:uppercase;
+}
+h1{font-size:clamp(32px,8vw,48px);font-weight:normal}
+h1 span{color:#ff9fbe;font-style:italic}
+.line{width:60px;height:1px;background:#ff9fbe;margin:25px auto}
+.message{font-size:19px;line-height:1.9;overflow-wrap:anywhere}
+.signature{margin-top:28px;color:#cbb7c9;font:14px Arial,sans-serif}
+.signature strong{display:block;color:#ff9fbe;font:italic 26px Georgia;margin-top:8px}
+button{
+ margin:12px 4px 0;padding:12px 18px;border-radius:25px;
+ border:1px solid #ff9fbe88;background:#ff9fbe18;
+ color:white;font-size:14px;cursor:pointer
+}
+#extra{display:none;line-height:1.8;color:#f3d6e3;margin-top:24px}
+.heart{
+ position:fixed;bottom:-30px;pointer-events:none;
+ color:#ff8eae;animation:rise 4s linear forwards
+}
+@keyframes rise{
+ from{transform:translateY(0);opacity:0}
+ 15%{opacity:.9}
+ to{transform:translateY(-110vh);opacity:0}
+}
+</style>
+</head>
+<body>
+<div class="card">
+ <div class="moon">☾ ♡ ☽</div>
+ <p class="small">A little note from my heart</p>
+ <h1>For you,<br><span>rasgulla🥺</span></h1>
+ <div class="line"></div>
+ <p class="message">I'm sorry for the times i hurt uh i never mean it, i just wanted to live with uh, i can't stay this NO TALKS WHOLE DAY, it hurtsss😣</p>
+ <p class="signature">With all my heart,<strong>kajukatri</strong></p>
+ <button onclick="hearts()">Send a little heart ♡</button>
+ <button onclick="note()">One more thing…</button>
+ <p id="extra">I miss talking to you. I don't want to pressure you — I just hope we can understand each other and find a way to talk that feels okay for both of us. 🤍</p>
+</div>
+<script>
+function hearts(){
+ for(let i=0;i<15;i++){
+  setTimeout(()=>{
+   const h=document.createElement("span");
+   h.className="heart";
+   h.textContent=["♡","♥","✧"][Math.floor(Math.random()*3)];
+   h.style.left=Math.random()*95+"vw";
+   h.style.fontSize=(18+Math.random()*20)+"px";
+   document.body.appendChild(h);
+   setTimeout(()=>h.remove(),4100);
+  },i*100);
+ }
+}
+function note(){
+ const e=document.getElementById("extra");
+ e.style.display=e.style.display==="block"?"none":"block";
+}
+</script>
+</body>
+</html>
