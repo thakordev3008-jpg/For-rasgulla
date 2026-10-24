@@ -1,84 +1,112 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For rasgulla 🥺</title>
+<meta name="theme-color" content="#f7e4ff">
+<title>For Rasgulla ♡</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:24px 16px;
- display:flex;align-items:center;justify-content:center;
- background:radial-gradient(ellipse at top,#482039,#100d16 75%);
- color:#fff0f7;font-family:Georgia,serif;
- overflow-x:hidden;
-}
-.card{
- width:100%;max-width:520px;padding:35px 24px;
- text-align:center;border:1px solid #ffffff25;
- border-radius:25px;
- background:linear-gradient(145deg,#281927,#17111e);
- box-shadow:0 20px 70px #0008;
-}
-.moon{font-size:30px;color:#ff9fbe}
-.small{
- color:#e5a7c0;letter-spacing:4px;
- font:11px Arial,sans-serif;text-transform:uppercase;
-}
-h1{font-size:clamp(32px,8vw,48px);font-weight:normal}
-h1 span{color:#ff9fbe;font-style:italic}
-.line{width:60px;height:1px;background:#ff9fbe;margin:25px auto}
-.message{font-size:19px;line-height:1.9;overflow-wrap:anywhere}
-.signature{margin-top:28px;color:#cbb7c9;font:14px Arial,sans-serif}
-.signature strong{display:block;color:#ff9fbe;font:italic 26px Georgia;margin-top:8px}
-button{
- margin:12px 4px 0;padding:12px 18px;border-radius:25px;
- border:1px solid #ff9fbe88;background:#ff9fbe18;
- color:white;font-size:14px;cursor:pointer
-}
-#extra{display:none;line-height:1.8;color:#f3d6e3;margin-top:24px}
-.heart{
- position:fixed;bottom:-30px;pointer-events:none;
- color:#ff8eae;animation:rise 4s linear forwards
-}
-@keyframes rise{
- from{transform:translateY(0);opacity:0}
- 15%{opacity:.9}
- to{transform:translateY(-110vh);opacity:0}
-}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:radial-gradient(circle at 50% 22%,#fff8ff,#fbe8ff 38%,#e7d8ff);font-family:Georgia,serif;color:#4d285e;overflow-x:hidden}
+body:before,body:after{content:"♡";position:fixed;color:#d4a9ee;opacity:.45;font-size:42px;animation:float 6s ease-in-out infinite;pointer-events:none}
+body:before{top:9%;left:9%}
+body:after{right:9%;bottom:10%;animation-delay:2s}
+.card{width:min(100%,430px);text-align:center;padding:26px 22px 30px;border:1px solid white;background:rgba(255,255,255,.76);border-radius:28px;box-shadow:0 18px 55px #a77ac52b}
+.tag{font:700 11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#a16cb6}
+h1{font-size:clamp(30px,8vw,42px);margin:10px 0 7px;color:#542b6a}
+.sub{font-style:italic;color:#9164a4;font-size:16px;margin:0 0 14px}
+.bears{width:100%;max-width:290px;display:block;margin:4px auto 12px}
+h2{font-size:25px;margin:12px 0;color:#542b6a}
+.message{font-size:17px;line-height:1.75;color:#78548b;margin:0 auto;max-width:330px}
+.from{margin:18px 0 20px;color:#a16cb6;font-style:italic}
+button{border:0;border-radius:999px;padding:13px 18px;background:#a96dc4;color:white;font-size:14px;font-weight:bold;cursor:pointer}
+.secondary{background:#f4e6fb;color:#704384;margin-left:6px}
+#extra{display:none;margin:18px auto 0;padding:14px;border-radius:16px;background:#fff3fd;color:#78548b;line-height:1.6}
+#envelope{width:190px;height:125px;margin:22px auto 18px;position:relative;cursor:pointer}
+.env-back{position:absolute;inset:0;background:#f6cce8;border-radius:8px}
+.letter{position:absolute;left:12px;right:12px;top:8px;height:100px;background:white;border-radius:5px;transition:transform .7s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#a66db9;font-size:24px}
+.letter span{font-size:11px;letter-spacing:1px}
+.env-front{position:absolute;inset:0;background:#f3bfe0;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:8px}
+.env-flap{position:absolute;inset:0;background:#f9d7ee;clip-path:polygon(0 0,100% 0,50% 63%)}
+#envelope.open .letter{transform:translateY(-57px)}
+#envelope.open .env-flap{transform:rotateX(180deg);transform-origin:top;transition:transform .5s}
+.hint{font:12px Arial,sans-serif;color:#a47ab5;margin-top:5px}
+.heart{position:fixed;bottom:-30px;color:#d88bd4;animation:rise 5s linear forwards;pointer-events:none}
+@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}
+@keyframes rise{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@media(max-width:380px){.card{padding:22px 16px}.message{font-size:16px}}
 </style>
 </head>
 <body>
-<div class="card">
- <div class="moon">☾ ♡ ☽</div>
- <p class="small">A little note from my heart</p>
- <h1>For you,<br><span>rasgulla🥺</span></h1>
- <div class="line"></div>
- <p class="message">I'm sorry for the times i hurt uh i never mean it, i just wanted to live with uh, i can't stay this NO TALKS WHOLE DAY, it hurtsss😣</p>
- <p class="signature">With all my heart,<strong>kajukatri</strong></p>
- <button onclick="hearts()">Send a little heart ♡</button>
- <button onclick="note()">One more thing…</button>
- <p id="extra">I miss talking to you. I don't want to pressure you — I just hope we can understand each other and find a way to talk that feels okay for both of us. 🤍</p>
+<main class="card">
+<div class="tag">a little note from</div>
+<h1>kajukatri ♡</h1>
+<p class="sub">for my rasgulla 🥺</p>
+
+<svg class="bears" viewBox="0 0 320 190" role="img" aria-label="Two cute teddy bears">
+<ellipse cx="160" cy="164" rx="106" ry="12" fill="#d8b9ed" opacity=".45"/>
+<g stroke="#8b624f" stroke-width="2.5" stroke-linejoin="round">
+<g transform="translate(47 38)">
+<circle cx="37" cy="18" r="15" fill="#fffafc"/><circle cx="91" cy="18" r="15" fill="#fffafc"/>
+<circle cx="64" cy="47" r="42" fill="#fffafc"/><ellipse cx="64" cy="65" rx="22" ry="16" fill="#f6dfe9"/>
+<circle cx="49" cy="45" r="3" fill="#543a49" stroke="none"/><circle cx="78" cy="45" r="3" fill="#543a49" stroke="none"/>
+<path d="M61 53q4 5 8 0" fill="none"/><path d="M41 53q-8 10 0 15M87 53q8 10 0 15" fill="none" stroke="#e7a3c4"/>
+<path d="M36 91q-18 25-5 39 16 10 34-8M91 91q20 18 13 34-9 10-29-2" fill="#fffafc"/>
+<ellipse cx="64" cy="119" rx="32" ry="22" fill="#fffafc"/>
+<path d="M48 118q16 9 31 0" fill="none" stroke="#e5a4c2"/>
+</g>
+<g transform="translate(154 35)">
+<circle cx="37" cy="18" r="15" fill="#d9a66e"/><circle cx="91" cy="18" r="15" fill="#d9a66e"/>
+<circle cx="64" cy="47" r="42" fill="#e8b77f"/><ellipse cx="64" cy="65" rx="22" ry="16" fill="#f8dfb6"/>
+<circle cx="49" cy="45" r="3" fill="#543a49" stroke="none"/><circle cx="78" cy="45" r="3" fill="#543a49" stroke="none"/>
+<ellipse cx="64" cy="56" rx="5" ry="4" fill="#704a39"/><path d="M59 63q5 5 10 0" fill="none"/>
+<path d="M36 91q-18 25-5 39 16 10 34-8M91 91q20 18 13 34-9 10-29-2" fill="#e8b77f"/>
+<ellipse cx="64" cy="119" rx="32" ry="22" fill="#e8b77f"/>
+<path d="M48 118q16 9 31 0" fill="none" stroke="#b57b53"/>
+</g></g>
+<path d="M157 22c-12-14-28 5 0 21 28-16 12-35 0-21" fill="#e8a0d7"/>
+<path d="M24 89c-9-10-20 4 0 16 20-12 9-26 0-16" fill="#b5a5f5"/>
+<path d="M286 77c-7-8-16 3 0 13 16-10 7-21 0-13" fill="#f3a4d0"/>
+</svg>
+
+<h2>I Know I Hurt You 💗</h2>
+<p class="message">I never wanted to be the reason you felt this way. I'm sorry for the times I hurt you — I never meant to. I just wanted to live my life with you. This silence and not talking the whole day hurts more than I can explain. 😣</p>
+<p class="from">always, kajukatri ♡</p>
+
+<button onclick="showLove()">Open one more thing 💌</button>
+<button class="secondary" onclick="makeHearts()">♡</button>
+
+<div id="extra">You matter to me, rasgulla. I can't undo the moments I hurt you, but my apology is real. I don't want to pressure you — I just wanted you to know what's in my heart. 🥺💗</div>
+
+<div id="envelope" onclick="this.classList.toggle('open')" aria-label="Tap to open the love letter">
+<div class="env-back"></div>
+<div class="letter">♡ <span>A LITTLE NOTE FOR YOU</span></div>
+<div class="env-front"></div>
+<div class="env-flap"></div>
 </div>
+<div class="hint">tap the envelope to open it ♡</div>
+</main>
+
 <script>
-function hearts(){
- for(let i=0;i<15;i++){
-  setTimeout(()=>{
-   const h=document.createElement("span");
-   h.className="heart";
-   h.textContent=["♡","♥","✧"][Math.floor(Math.random()*3)];
-   h.style.left=Math.random()*95+"vw";
-   h.style.fontSize=(18+Math.random()*20)+"px";
-   document.body.appendChild(h);
-   setTimeout(()=>h.remove(),4100);
-  },i*100);
- }
+function showLove(){
+const e=document.getElementById('extra');
+e.style.display=e.style.display==='block'?'none':'block';
+makeHearts();
 }
-function note(){
- const e=document.getElementById("extra");
- e.style.display=e.style.display==="block"?"none":"block";
+function makeHearts(){
+for(let i=0;i<9;i++){
+const h=document.createElement('span');
+h.className='heart';
+h.textContent=['♡','♥','💗','✧'][Math.floor(Math.random()*4)];
+h.style.left=Math.random()*100+'vw';
+h.style.animationDuration=(3+Math.random()*3)+'s';
+h.style.fontSize=(16+Math.random()*20)+'px';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6500);
 }
+}
+setInterval(()=>{if(Math.random()>.45)makeHearts()},4200);
 </script>
 </body>
 </html>
