@@ -20,7 +20,7 @@ body{
  border-radius:28px;box-shadow:0 18px 55px #a77ac533;
  display:flex;flex-direction:column;justify-content:center;
 }
-.tag{font: bold 11px Arial;letter-spacing:3px;color:#a16cb6}
+.tag{font:bold 11px Arial;letter-spacing:3px;color:#a16cb6}
 h1{font-size:38px;margin:14px 0}
 h2{font-size:27px;line-height:1.3}
 p{font-size:17px;line-height:1.7;color:#78548b}
@@ -41,13 +41,28 @@ button{
 .heart{position:fixed;bottom:-30px;animation:rise 4s linear forwards;pointer-events:none}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes rise{to{transform:translateY(-110vh);opacity:0}}
+
+/* New page 6 styles */
+.date-area{
+ position:relative;
+ min-height:135px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ flex-wrap:wrap;
+ margin:12px 0;
+}
+#noBtn{background:#f4e6fb;color:#704384;transition:transform .18s ease}
+#dateMessage{display:none;margin-top:12px}
 </style>
 </head>
 <body>
 <main class="card">
 <div class="pages">
 <span class="dot active"></span><span class="dot"></span>
-<span class="dot"></span><span class="dot"></span><span class="dot"></span>
+<span class="dot"></span><span class="dot"></span>
+<span class="dot"></span><span class="dot"></span>
 </div>
 
 <section class="page active" id="p1">
@@ -95,18 +110,41 @@ button{
 <button class="secondary" onclick="choose(false)">I'm not ready / no</button>
 <div id="answer" class="box"></div>
 <button class="secondary" onclick="go(1)">Read from the beginning ↺</button>
+<button onclick="go(6)">One tiny question more? 🥺💌</button>
+</section>
+
+<!-- NEW PAGE 6 -->
+<section class="page" id="p6">
+<div class="tag">PAGE 6 · ONE LITTLE QUESTION</div>
+<div class="bear">🧸💐💗</div>
+<h2>So, rasgulla… 🥺</h2>
+<p>Would you like to go on a date with me? 👉👈💕</p>
+<p>Just a cute little date, if you'd like one. 🌷</p>
+
+<div class="date-area" id="dateArea">
+<button onclick="dateYes()">YES 💗</button>
+<button id="noBtn" onclick="dateNo()" onpointerenter="moveNo()" ontouchstart="touchNo(event)">NO 🙈</button>
+</div>
+
+<div id="dateMessage" class="box"></div>
+<button class="secondary" onclick="go(5)">Back ♡</button>
 </section>
 
 <p style="font-size:12px">Made with care by kajukatri ♡</p>
 </main>
 
 <script>
+let noAttempts=0;
+let noGone=false;
+
 function go(n){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  document.getElementById('p'+n).classList.add('active');
  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n-1));
  if(n===5) hearts(5);
+ if(n===6) resetDatePage();
 }
+
 function choose(accepted){
  let a=document.getElementById('answer');
  a.style.display='block';
@@ -117,16 +155,69 @@ function choose(accepted){
   a.textContent="I understand. You don't have to accept my apology before you're ready, or at all. I'll respect your feelings and give you space. 💜";
  }
 }
+
 function hearts(n){
  for(let i=0;i<n;i++){
   let h=document.createElement('span');
-  h.className='heart';h.textContent=['♡','♥','💗','✧'][Math.floor(Math.random()*4)];
+  h.className='heart';
+  h.textContent=['♡','♥','💗','✧'][Math.floor(Math.random()*4)];
   h.style.left=Math.random()*100+'vw';
   h.style.fontSize=(18+Math.random()*18)+'px';
   h.style.animationDuration=(3+Math.random()*3)+'s';
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),6500);
  }
+}
+
+function resetDatePage(){
+ noAttempts=0;
+ noGone=false;
+ const b=document.getElementById('noBtn');
+ b.style.display='inline-block';
+ b.style.transform='translate(0,0)';
+ document.getElementById('dateMessage').style.display='none';
+}
+
+function moveNo(){
+ if(!document.getElementById('p6').classList.contains('active') || noGone) return;
+ dodgeNo();
+}
+
+function touchNo(e){
+ if(noGone) return;
+ e.preventDefault();
+ dodgeNo();
+}
+
+function dodgeNo(){
+ noAttempts++;
+ const b=document.getElementById('noBtn');
+ const msg=document.getElementById('dateMessage');
+
+ if(noAttempts>=3){
+  b.style.display='none';
+  noGone=true;
+  msg.style.display='block';
+  msg.textContent="Hehe, you really tried to catch the NO button! 🙈💕";
+  hearts(7);
+  return;
+ }
+
+ const x=(Math.random()*180)-90;
+ const y=(Math.random()*70)-35;
+ b.style.transform=`translate(${x}px,${y}px)`;
+}
+
+function dateNo(){
+ // A tap on the button counts as an attempt too.
+ dodgeNo();
+}
+
+function dateYes(){
+ const msg=document.getElementById('dateMessage');
+ msg.style.display='block';
+ msg.textContent="Awww 🥹💗 Thank you for saying yes! We can plan something cute together, only if you're comfortable. — kajukatri ♡";
+ hearts(20);
 }
 </script>
 </body>
