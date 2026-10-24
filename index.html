@@ -42,18 +42,28 @@ button{
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes rise{to{transform:translateY(-110vh);opacity:0}}
 
-/* New page 6 styles */
+/* Page 6 */
 .date-area{
- position:relative;
- min-height:135px;
- display:flex;
- align-items:center;
- justify-content:center;
- gap:12px;
- flex-wrap:wrap;
- margin:12px 0;
+ position:relative;min-height:135px;
+ display:flex;align-items:center;justify-content:center;
+ gap:12px;flex-wrap:wrap;margin:12px 0;
 }
 #noBtn{background:#f4e6fb;color:#704384;transition:transform .18s ease}
+
+/* Bigger, eye-catching surprise button */
+.next-date-btn{
+ display:block;width:95%;margin:12px auto 18px;
+ padding:17px 12px;font-size:17px;line-height:1.4;
+ background:linear-gradient(135deg,#c77de0,#a34fc4);
+ color:white;box-shadow:0 7px 18px #b16bc655;
+ border:2px solid white;
+ animation:datePulse 1.8s ease-in-out infinite;
+ position:relative;top:-5px;
+}
+@keyframes datePulse{
+ 0%,100%{transform:scale(1)}
+ 50%{transform:scale(1.035)}
+}
 #dateMessage{display:none;margin-top:12px}
 </style>
 </head>
@@ -110,10 +120,16 @@ button{
 <button class="secondary" onclick="choose(false)">I'm not ready / no</button>
 <div id="answer" class="box"></div>
 <button class="secondary" onclick="go(1)">Read from the beginning ↺</button>
-<button onclick="go(6)">One tiny question more? 🥺💌</button>
+
+<button class="next-date-btn" onclick="go(6)">
+💌 ONE LAST LITTLE SURPRISE 💗<br>
+<span style="font-size:14px;font-weight:normal">
+There's one more thing I wanna ask you 🥺👉👈
+</span>
+</button>
 </section>
 
-<!-- NEW PAGE 6 -->
+<!-- NEW FINAL PAGE -->
 <section class="page" id="p6">
 <div class="tag">PAGE 6 · ONE LITTLE QUESTION</div>
 <div class="bear">🧸💐💗</div>
@@ -209,7 +225,6 @@ function dodgeNo(){
 }
 
 function dateNo(){
- // A tap on the button counts as an attempt too.
  dodgeNo();
 }
 
